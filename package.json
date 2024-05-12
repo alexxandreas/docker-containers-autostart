@@ -1,0 +1,25 @@
+{
+  "name": "docker-containers-autostart",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "docker-build": "docker build -t alexandreas/docker-containers-autostart:latest .",
+    "docker-run": "docker run --rm -it --name docker-containers-autostart -v $PWD/config/:/opt/app/config/ -v $PWD/records/:/opt/app/records/ -p 8086:3000 alexandreas/docker-containers-autostart",
+    "release": "DOCKER_REPO=alexandreas/docker-containers-autostart BRANCH=master BUILD=date ./release/release.sh",
+    "release-major": "npm run release -- major",
+    "release-minor": "npm run release -- minor",
+    "release-patch": "npm run release -- patch"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dockerode": "^4.0.2",
+    "node-cron": "^3.0.3"
+  },
+  "devDependencies": {
+    "semver": "^7.3.5"
+  }
+}
