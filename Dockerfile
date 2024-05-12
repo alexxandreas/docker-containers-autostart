@@ -1,6 +1,6 @@
-FROM --platform=linux/amd64 node:14-alpine
+FROM --platform=linux/amd64 node:20-alpine
 
-RUN apk add ffmpeg
+# RUN apk add ffmpeg
 
 RUN apk add --no-cache tzdata
 ENV TZ=Europe/Moscow
@@ -13,7 +13,7 @@ COPY package-lock.json package-lock.json
 RUN npm ci
 
 COPY index.js index.js
-COPY src/ src/
+# COPY src/ src/
 
 ENTRYPOINT []
 CMD node index.js
